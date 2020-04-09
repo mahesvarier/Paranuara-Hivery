@@ -33,5 +33,5 @@ class Fetch_Friends(Resource):
         return dict(
             person_1= people_1.as_dict(),
             person_2= people_2.as_dict(),
-            mutual_friends= special_friends)
+            mutual_friends= mutual_friends)
         
