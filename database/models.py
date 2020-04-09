@@ -29,6 +29,16 @@ class People(db.Document):
     email = db.EmailField()
     about = db.StringField()
     guid = db.StringField()
-    balance = db.DecimalField()
+    balance = db.StringField()
     picture = db.URLField()
     gender = db.StringField(required=True, choices=['male', 'female'])
+
+    def friend_indexes(self):
+        """Return indexes for friend from associated FriendRefs"""
+        # note: in `people` collection there are circular references, i.e. a person
+        # is a friend with him/herself
+        return [friend_ref.index for friend_ref in self.friends]
+
+    def as_dict(self):
+        """Helper to render a person as dict with basic attributes"""
+        return dict(name=self.name, age=self.age, address=self.address, phone=self.phone)

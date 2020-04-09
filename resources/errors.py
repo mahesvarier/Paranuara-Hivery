@@ -4,22 +4,7 @@ class InternalServerError(Exception):
 class SchemaValidationError(Exception):
     pass
 
-class MovieAlreadyExistsError(Exception):
-    pass
-
-class UpdatingMovieError(Exception):
-    pass
-
-class DeletingMovieError(Exception):
-    pass
-
-class MovieNotExistsError(Exception):
-    pass
-
-class EmailAlreadyExistsError(Exception):
-    pass
-
-class UnauthorizedError(Exception):
+class WrongParameterError(Exception):
     pass
 
 errors = {
@@ -31,4 +16,8 @@ errors = {
          "message": "Request is missing required fields",
          "status": 400
      },
+     "WrongParameterError": {
+         "message": "Parameter has incorrect value",
+         "status": 400
+     }
 }
