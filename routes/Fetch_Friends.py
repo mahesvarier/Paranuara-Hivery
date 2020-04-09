@@ -3,27 +3,30 @@ from flask_restful import Resource, Api
 from database.models import Companies,People
 import json
 
+class Invalid_Person():
+    def get_message(self,id):
+        message = 'Parameter person_' + str(id) + ' is invalid'
+        return message
+    def as_dict(self, id):
+        message = self.get_message(id)
+        return dict(message=message)
+
 class Fetch_Friends(Resource):
     def get(self):
-        keys = ["name", "address", "age", "phone"]
-        
         person = request.args.getlist('person') 
         person_1 = person[0]
         person_2 = person[1]
 
         people_1 = People.objects(index=person_1).first()
         if(people_1 == None):
-            return {'message': 'Person 1 is invalid'}
-        # people_data_1 = people_1.to_json()
-        # people_first = json.loads(people_data_1)
-        # people_first_dict = {x: people_first[x] for x in keys}
+            result = Invalid_Person()
+            return result.as_dict(1) 
 
         people_2 = People.objects(index=person_2).first()
         if(people_2 == None):
-            return {'message': 'Person 2 is invalid'}
-        # people_data_2 = people_2.to_json()
-        # people_second = json.loads(people_data_2)
-        # people_first_dict = {x: people_second[x] for x in keys}
+            result = Invalid_Person()
+            print(result.as_dict(2))
+            return result.as_dict(2) 
 
         common_friends = list(filter(lambda p: p in people_1.friend_indexes(),
                                      people_2.friend_indexes()))

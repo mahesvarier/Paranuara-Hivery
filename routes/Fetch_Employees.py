@@ -7,8 +7,9 @@ from resources.errors import InternalServerError, SchemaValidationError, WrongPa
 import werkzeug
 
 class No_Records():
-    def __init__(self):
-        message = 'No Employees'
+    message = 'No Employees match the request'
+    def as_dict(self):
+        return dict(message=self.message)
 
 class Fetch_Employees(Resource):
     def get(self):
@@ -19,8 +20,7 @@ class Fetch_Employees(Resource):
             dicts = json.loads(people_data)
             if len(dicts) == 0:
                 no_records = No_Records()
-                print(no_records.message)
-                return {'message': 'No Employees'}
+                return no_records.as_dict()
             return dicts
         except (ValueError):
             raise WrongParameterError
