@@ -11,7 +11,7 @@ class Test_Fetch_Friends(unittest.TestCase):
 
     def test_fetch_friends(self):
         # When
-        response = self.test_client.get('fetch_friends?person=1&person=5')
+        response = self.test_client.get('fetch_friends?person_1=1&person_2=5')
         # Then
         self.assertEqual(200, response.status_code)
 

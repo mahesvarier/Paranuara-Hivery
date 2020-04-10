@@ -9,8 +9,8 @@ class Test_Fetch_Fruits(unittest.TestCase):
     test_client = app.test_client()
     get_db = db.get_db()
 
-    def test_fetch_fruits(self):
-        response = self.test_client.get('fetch_fruits?person_id=6')
+    def test_fetch_people(self):
+        response = self.test_client.get('fetch_person?person_id=6')
         self.assertEqual(200, response.status_code)
 
     if __name__ == "__main__":

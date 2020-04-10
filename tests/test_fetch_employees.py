@@ -10,11 +10,13 @@ class Test_Fetch_Employees(unittest.TestCase):
     get_db = db.get_db()
 
     def test_fetch_employees(self):
-        # When
         response = self.test_client.get('fetch_employees?company_id=1')
-        print(response)
-        # Then
         self.assertEqual(200, response.status_code)
     
+    def test_fetch_employees_400(self):
+        response = self.test_client.get('fetch_employees?company_id=1')
+        self.assertEqual(200, response.status_code)
+
+
     if __name__ == "__main__":
         unittest.main()
