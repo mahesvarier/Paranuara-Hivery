@@ -7,6 +7,7 @@ class SchemaValidationError(Exception):
 class WrongParameterError(Exception):
     pass
 
+# Error Types used in ~/routes/<files>
 errors = {
     "InternalServerError": {
         "message": "Something went wrong",

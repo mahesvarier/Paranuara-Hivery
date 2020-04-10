@@ -6,10 +6,13 @@ from mongoengine.errors import FieldDoesNotExist,NotUniqueError, DoesNotExist, V
 from resources.errors import InternalServerError, SchemaValidationError, WrongParameterError
 import werkzeug
 
+# Return for a parameter that is not valid.
 class Invalid_Person():
     def get_message(self,id):
         message = 'Parameter person_' + str(id) + ' is invalid'
         return message
+
+    # Serializing to JSON. 
     def as_dict(self, id):
         message = self.get_message(id)
         return dict(message=message)
@@ -17,10 +20,11 @@ class Invalid_Person():
 class Fetch_Friends(Resource):
     def get(self):
         try:
+            # Fetching the parameters.
             person = request.args.getlist('person') 
             person_1 = person[0]
             person_2 = person[1]
-
+            
             people_1 = People.objects(index=person_1).first()
             if(people_1 == None):
                 result = Invalid_Person()
@@ -32,8 +36,11 @@ class Fetch_Friends(Resource):
                 print(result.as_dict(2))
                 return result.as_dict(2) 
 
+            # Fetching common friends
             common_friends = list(filter(lambda p: p in people_1.friend_indexes(),
                                         people_2.friend_indexes()))
+
+            # Fetching Mutual friends who are not dead and have brown eye color.
             mutual_friends = People.objects(index__in=common_friends, eyeColor='brown',has_died=False)
             mutual_friends = list(map(lambda p: p.as_dict(), mutual_friends))
 

@@ -12,12 +12,17 @@ app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://127.0.0.1:27017/Paranuara',
 }
 
+# Initializing the mongo db instance.
 db = initialize_db(app)
 
+# API for Feature 1:
 api.add_resource(Fetch_Employees, '/fetch_employees')
+
+# API for Feature 2:
 api.add_resource(Fetch_Friends, '/fetch_friends')
+
+# API for Feature 3:
 api.add_resource(Fetch_Fruits,'/fetch_fruits')
 
 if __name__ == "__main__":
     app.run()
-# app.run()

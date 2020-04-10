@@ -6,7 +6,10 @@ from mongoengine.errors import FieldDoesNotExist,NotUniqueError, DoesNotExist, V
 from resources.errors import InternalServerError, SchemaValidationError, WrongParameterError
 import werkzeug
 
+# Fruit Types:
 fruits = set(['apple', 'strawberry', 'orange', 'banana'])
+
+# Vegetable Types:
 vegetable = set(['beetroot', 'celery', 'carrot', 'cucumber'])
 
 class Fetch_Fruits(Resource):
