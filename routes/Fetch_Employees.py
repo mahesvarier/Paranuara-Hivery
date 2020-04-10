@@ -17,7 +17,7 @@ class Fetch_Employees(Resource):
         try:
             # Fetching the parameters
             company_id = request.args['company_id'] 
-            people = People.objects(company_id=company_id)
+            people = People.objects(Company_Id=company_id)
 
             # Serializing to JSON
             people_data = people.to_json()

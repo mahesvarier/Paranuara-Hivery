@@ -22,7 +22,7 @@ api.add_resource(Fetch_Employees, '/fetch_employees')
 api.add_resource(Fetch_Friends, '/fetch_friends')
 
 # API for Feature 3:
-api.add_resource(Fetch_Person,'/fetch_Person')
+api.add_resource(Fetch_Person,'/fetch_person')
 
 if __name__ == "__main__":
     app.run()

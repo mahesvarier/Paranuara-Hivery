@@ -17,23 +17,36 @@ class Invalid_Person():
         message = self.get_message(id)
         return dict(message=message)
 
+
+class Invalid_Params():
+    def get_message(self):
+        message = 'Parameter person_1 and parameter person_2 cannot be the same'
+        return message
+
+    # Serializing to JSON. 
+    def as_dict(self):
+        message = self.get_message()
+        return dict(message=message)        
+
 class Fetch_Friends(Resource):
     def get(self):
         try:
             # Fetching the parameters.
-            person = request.args.getlist('person') 
-            person_1 = person[0]
-            person_2 = person[1]
+            person_1_param = request.args['person_1'] 
+            person_2_param = request.args['person_2'] 
             
-            people_1 = People.objects(index=person_1).first()
+            if(person_1_param == person_2_param):
+                result = Invalid_Params()
+                return result.as_dict() 
+
+            people_1 = People.objects(index=person_1_param).first()
             if(people_1 == None):
                 result = Invalid_Person()
                 return result.as_dict(1) 
 
-            people_2 = People.objects(index=person_2).first()
+            people_2 = People.objects(index=person_2_param).first()
             if(people_2 == None):
                 result = Invalid_Person()
-                print(result.as_dict(2))
                 return result.as_dict(2) 
 
             # Fetching common friends
