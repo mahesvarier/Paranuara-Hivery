@@ -18,4 +18,6 @@ api.add_resource(Fetch_Employees, '/fetch_employees')
 api.add_resource(Fetch_Friends, '/fetch_friends')
 api.add_resource(Fetch_Fruits,'/fetch_fruits')
 
-app.run()
+if __name__ == "__main__":
+    app.run()
+# app.run()

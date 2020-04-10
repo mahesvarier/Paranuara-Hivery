@@ -14,7 +14,9 @@ class Fetch_Fruits(Resource):
         try:
             company_id = request.args.getlist('person_id') 
             if len(company_id) == 0:
-                return {"message": "Person Id is required"}
+                return {
+                        "message": "Person Id is required"
+                        }
             company_id = company_id[0]
             people = People.objects(index=company_id).first()
 
@@ -26,7 +28,7 @@ class Fetch_Fruits(Resource):
                 "age": people.age,
                 "fruits": fruits_list,
                 "vegetables": vegetable_list
-            }
+                }
             return result
         except (ValueError):
             raise WrongParameterError
