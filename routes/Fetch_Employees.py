@@ -10,7 +10,7 @@ import werkzeug
 class No_Records():
     message = 'No Employees match the request'
     def as_dict(self):
-        return dict(message=self.message)
+        return dict(message=self.message, status=400)
 
 class Fetch_Employees(Resource):
     def get(self):

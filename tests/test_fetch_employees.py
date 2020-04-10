@@ -13,10 +13,14 @@ class Test_Fetch_Employees(unittest.TestCase):
         response = self.test_client.get('fetch_employees?company_id=1')
         self.assertEqual(200, response.status_code)
     
-    def test_fetch_employees_400(self):
-        response = self.test_client.get('fetch_employees?company_id=1')
-        self.assertEqual(200, response.status_code)
+    def test_fetch_employees_400_URL(self):
+        response = self.test_client.get('fetch_employees')
+        self.assertEqual(400, response.status_code)
 
+    def test_fetch_employees_400_TYPE(self):
+        response = self.test_client.get('fetch_employees?company_id=type')
+        print(response)
+        self.assertEqual(200, response.status_code)
 
     if __name__ == "__main__":
         unittest.main()

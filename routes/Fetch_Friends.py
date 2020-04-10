@@ -15,7 +15,7 @@ class Invalid_Person():
     # Serializing to JSON. 
     def as_dict(self, id):
         message = self.get_message(id)
-        return dict(message=message)
+        return dict(message=message, status = 400)
 
 
 class Invalid_Params():
@@ -26,7 +26,7 @@ class Invalid_Params():
     # Serializing to JSON. 
     def as_dict(self):
         message = self.get_message()
-        return dict(message=message)        
+        return dict(message=message, status=400)        
 
 class Fetch_Friends(Resource):
     def get(self):
