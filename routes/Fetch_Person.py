@@ -12,7 +12,7 @@ fruits = set(['apple', 'strawberry', 'orange', 'banana'])
 # Vegetable Types:
 vegetable = set(['beetroot', 'celery', 'carrot', 'cucumber'])
 
-class Fetch_Fruits(Resource):
+class Fetch_Person(Resource):
     def get(self):
         try:
             company_id = request.args.getlist('person_id') 

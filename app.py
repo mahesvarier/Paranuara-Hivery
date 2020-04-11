@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from database.db import initialize_db
 from routes.Fetch_Employees import Fetch_Employees
 from routes.Fetch_Friends import Fetch_Friends
-from routes.Fetch_Fruits import Fetch_Fruits
+from routes.Fetch_Fruits import Fetch_Person
 from resources.errors import errors
 
 app = Flask(__name__)
@@ -22,7 +22,7 @@ api.add_resource(Fetch_Employees, '/fetch_employees')
 api.add_resource(Fetch_Friends, '/fetch_friends')
 
 # API for Feature 3:
-api.add_resource(Fetch_Fruits,'/fetch_fruits')
+api.add_resource(Fetch_Person,'/fetch_Person')
 
 if __name__ == "__main__":
     app.run()
