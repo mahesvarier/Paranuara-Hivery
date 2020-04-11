@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from database.db import initialize_db
 from routes.Fetch_Employees import Fetch_Employees
 from routes.Fetch_Friends import Fetch_Friends
-from routes.Fetch_Fruits import Fetch_Person
+from routes.Fetch_Person import Fetch_Person
 from resources.errors import errors
 
 app = Flask(__name__)
