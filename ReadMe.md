@@ -20,7 +20,7 @@ Navigate into Paranuara-Hivery/static folder:
 
     cd static
 
-Import the JSON files into MongoDB using:
+Import the JSON files into MongoDB using (if the OS is   Windows, please copy the files in static in the MongoDB installation folder and run the below commands to import the JSON):
 
     mongoimport --db Paranuara --collection Companies --file companies.json --jsonArray
     mongoimport --db Paranuara --collection People --file people.json --jsonArray
@@ -46,6 +46,8 @@ On succesfull installation, start the server:
     python app.py
 
 ## Features:
+
+The features developed are as per the Read Me file in static folder. Upon running the previous command to start the server, the port in which the server will be displayed. Append the API path below to the URL to fetch the details.
 
 ### Feature 1:
 Given a company, the API needs to return all their employees. Provide the appropriate solution if the company does not have any employees.
