@@ -20,7 +20,7 @@ class Test_Fetch_Employees(unittest.TestCase):
     def test_fetch_employees_400_TYPE(self):
         response = self.test_client.get('fetch_employees?company_id=type')
         print(response)
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(400, response.status_code)
 
     if __name__ == "__main__":
         unittest.main()
