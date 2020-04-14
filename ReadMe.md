@@ -69,3 +69,19 @@ Given 1 people, provide a list of fruits and vegetables they like. This endpoint
     API: /fetch_person?person_id=<index of the person>
 
     For ex: http://127.0.0.1:5000/fetch_person?person_id=4
+
+## Running Unit Tests:
+
+In order to run unit tests, run the below command in the project root folder.
+
+### Feature 1:
+
+    python -m unittest tests/test_fetch_employees.py
+
+### Feature 2:
+
+    python -m unittest tests/test_fetch_friends.py
+
+### Feature 3:
+
+    python -m unittest tests/test_fetch_people.py
